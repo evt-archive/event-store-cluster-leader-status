@@ -1,0 +1,13 @@
+require 'clock/controls'
+require 'identifier/uuid/controls'
+require 'event_store/http/connect/controls'
+
+require 'event_store/clustering/controls/cluster_size'
+require 'event_store/clustering/controls/current_members'
+require 'event_store/clustering/controls/gossip_endpoint/response'
+require 'event_store/clustering/controls/hostname'
+require 'event_store/clustering/controls/ip_address'
+require 'event_store/clustering/controls/resolve_host'
+require 'event_store/clustering/controls/port'
+require 'event_store/clustering/controls/uuid'
+require 'event_store/clustering/controls/time'
