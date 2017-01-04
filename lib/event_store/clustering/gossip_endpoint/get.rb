@@ -6,11 +6,17 @@ module EventStore
 
         configure :get_status
 
-        dependency :connect, EventStore::HTTP::Connect
+        dependency :connect_http, EventStore::HTTP::Connect
 
-        def self.build(settings=nil, namespace: nil)
+        def self.build(connect_http=nil)
           instance = new
-          EventStore::HTTP::Connect.configure instance, settings, namespace: namespace
+
+          EventStore::HTTP::Connect.configure(
+            instance,
+            connect: connect_http,
+            attr_name: :connect_http
+          )
+
           instance
         end
 
@@ -24,7 +30,7 @@ module EventStore
 
           logger.trace { "GET gossip endpoint (#{log_attributes})" }
 
-          connect.(host) do |connection|
+          connect_http.(host) do |connection|
             response = connection.request_get uri_path, http_headers
 
             log_attributes << ", StatusCode: #{response.code}, ReasonPhrase: #{response.message}"
@@ -48,7 +54,7 @@ module EventStore
 
         module LogAttributes
           def self.get(get_instance, host: nil)
-            host_setting = get_instance.connect.host
+            host_setting = get_instance.connect_http.host
 
             if host.nil?
               host_text = host_setting
