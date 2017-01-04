@@ -8,6 +8,8 @@ require 'event_store/clustering/controls'
 
 require 'test_bench'; TestBench.activate
 
+require_relative './fixtures/fixtures_init'
+
 require 'pp'
 
 Net::HTTP.send :const_set, :Assertions, EventStore::HTTP::Connect::NetHTTP::Assertions

@@ -29,11 +29,12 @@ module EventStore
 
             log_attributes << ", StatusCode: #{response.code}, ReasonPhrase: #{response.message}"
 
-            cluster_status = Transform::Read.(response.body, :json, GossipEndpoint)
+            logger.debug { "GET gossip endpoint done (#{log_attributes})" }
+            logger.trace { "Data: \n\n#{response.body}" }
 
-            logger.debug { "GET gossip endpoint done (#{log_attributes}, ClusterStatus: #{cluster_status.digest})" }
+            response = Transform::Read.(response.body, :json, Response)
 
-            return cluster_status
+            return response
           end
         end
 

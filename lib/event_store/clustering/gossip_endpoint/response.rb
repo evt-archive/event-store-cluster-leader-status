@@ -4,10 +4,17 @@ module EventStore
       class Response
         include Schema::DataStructure
 
-        attribute :leader_ip_address, String
+        attribute :server_ip, String
+        attribute :server_port, Integer
+        attribute :leader, Member
+        attribute :followers, Array, default: ->{ Array.new }
 
-        def digest
-          "[leaderIPAddress: #{leader_ip_address}]"
+        def add_member(member)
+          if member.state == State.leader
+            self.leader = member
+          else
+            followers << member
+          end
         end
       end
     end

@@ -3,47 +3,21 @@ module EventStore
     module Controls
       module GossipEndpoint
         module Response
-          def self.instance_id(member_id=nil)
-            member_id ||= 1
-
-            UUID.example member_id
+          def self.server_ip
+            IPAddress.example
           end
 
-          def self.epoch_id
-            UUID.example 11
+          def self.server_port
+            Port::HTTP::Internal.example
           end
 
-          def self.epoch_number
-            1111
-          end
+          module State
+            def self.leader
+              'Master'
+            end
 
-          def self.ip_address(member_id=nil)
-            IPAddress.example member_id
-          end
-
-          def self.leader_ip_address
-            IPAddress::Leader.example
-          end
-
-          def self.last_commit_position
-            111
-          end
-
-          def self.writer_checkpoint
-            110
-          end
-
-          def self.chaser_checkpoint
-            109
-          end
-
-          def self.epoch_position
-            108
-          end
-
-          module Time
-            def self.example
-              Controls::Time.example
+            def self.follower
+              'Slave'
             end
           end
 
@@ -53,85 +27,79 @@ module EventStore
 {
   "members": [
     {
-      "instanceId": "#{Response.instance_id 1}",
-      "timeStamp": "#{Time.example}",
-      "state": "Slave",
-      "isAlive": true,
-      "internalTcpIp": "#{Response.ip_address 1}",
-      "internalTcpPort": 1112,
-      "internalSecureTcpPort": 0,
-      "externalTcpIp": "#{Response.ip_address 1}",
-      "externalTcpPort": 1113,
-      "externalSecureTcpPort": 0,
-      "internalHttpIp": "#{Response.ip_address 1}",
-      "internalHttpPort": 2112,
-      "externalHttpIp": "#{Response.ip_address 1}",
-      "externalHttpPort": 2113,
-      "lastCommitPosition": #{Response.last_commit_position},
-      "writerCheckpoint": #{Response.writer_checkpoint},
-      "chaserCheckpoint": #{Response.chaser_checkpoint},
-      "epochPosition": #{Response.epoch_position},
-      "epochNumber": #{Response.epoch_number},
-      "epochId": "#{Response.epoch_id}",
-      "nodePriority": 0
-    },
-    {
-      "instanceId": "#{Response.instance_id 2}",
-      "timeStamp": "#{Time.example}",
+      "instanceId": "00000101-0000-4000-8000-000000000000",
+      "timeStamp": "2000-01-01T00:00:00.000000Z",
       "state": "Master",
       "isAlive": true,
-      "internalTcpIp": "#{Response.ip_address 2}",
+      "internalTcpIp": "127.0.111.1",
       "internalTcpPort": 1112,
       "internalSecureTcpPort": 0,
-      "externalTcpIp": "#{Response.ip_address 2}",
+      "externalTcpIp": "127.0.111.1",
       "externalTcpPort": 1113,
       "externalSecureTcpPort": 0,
-      "internalHttpIp": "#{Response.ip_address 2}",
+      "internalHttpIp": "127.0.111.1",
       "internalHttpPort": 2112,
-      "externalHttpIp": "#{Response.ip_address 2}",
+      "externalHttpIp": "127.0.111.1",
       "externalHttpPort": 2113,
-      "lastCommitPosition": #{Response.last_commit_position},
-      "writerCheckpoint": #{Response.writer_checkpoint},
-      "chaserCheckpoint": #{Response.chaser_checkpoint},
-      "epochPosition": #{Response.epoch_position},
-      "epochNumber": #{Response.epoch_number},
-      "epochId": "#{Response.epoch_id}",
+      "lastCommitPosition": 1111,
+      "writerCheckpoint": 111,
+      "chaserCheckpoint": 11,
+      "epochPosition": 222,
+      "epochNumber": 22,
+      "epochId": "00000001-0000-4000-8000-000000000000",
       "nodePriority": 0
     },
     {
-      "instanceId": "#{Response.instance_id 3}",
-      "timeStamp": "#{Time.example}",
+      "instanceId": "00000102-0000-4000-8000-000000000000",
+      "timeStamp": "2000-01-01T00:00:00.000000Z",
       "state": "Slave",
       "isAlive": true,
-      "internalTcpIp": "#{Response.ip_address 3}",
+      "internalTcpIp": "127.0.111.2",
       "internalTcpPort": 1112,
       "internalSecureTcpPort": 0,
-      "externalTcpIp": "#{Response.ip_address 3}",
+      "externalTcpIp": "127.0.111.2",
       "externalTcpPort": 1113,
       "externalSecureTcpPort": 0,
-      "internalHttpIp": "#{Response.ip_address 3}",
+      "internalHttpIp": "127.0.111.2",
       "internalHttpPort": 2112,
-      "externalHttpIp": "#{Response.ip_address 3}",
+      "externalHttpIp": "127.0.111.2",
       "externalHttpPort": 2113,
-      "lastCommitPosition": #{Response.last_commit_position},
-      "writerCheckpoint": #{Response.writer_checkpoint},
-      "chaserCheckpoint": #{Response.chaser_checkpoint},
-      "epochPosition": #{Response.epoch_position},
-      "epochNumber": #{Response.epoch_number},
-      "epochId": "#{Response.epoch_id}",
+      "lastCommitPosition": 1111,
+      "writerCheckpoint": 111,
+      "chaserCheckpoint": 11,
+      "epochPosition": 222,
+      "epochNumber": 22,
+      "epochId": "00000001-0000-4000-8000-000000000000",
+      "nodePriority": 0
+    },
+    {
+      "instanceId": "00000103-0000-4000-8000-000000000000",
+      "timeStamp": "2000-01-01T00:00:00.000000Z",
+      "state": "Slave",
+      "isAlive": false,
+      "internalTcpIp": "127.0.111.3",
+      "internalTcpPort": 1112,
+      "internalSecureTcpPort": 0,
+      "externalTcpIp": "127.0.111.3",
+      "externalTcpPort": 1113,
+      "externalSecureTcpPort": 0,
+      "internalHttpIp": "127.0.111.3",
+      "internalHttpPort": 2112,
+      "externalHttpIp": "127.0.111.3",
+      "externalHttpPort": 2113,
+      "lastCommitPosition": 1111,
+      "writerCheckpoint": 111,
+      "chaserCheckpoint": 11,
+      "epochPosition": 222,
+      "epochNumber": 22,
+      "epochId": "00000001-0000-4000-8000-000000000000",
       "nodePriority": 0
     }
   ],
-  "serverIp": "#{Response.ip_address 1}",
+  "serverIp": "127.0.111.1",
   "serverPort": 2112
 }
               JSON
-            end
-
-            module Time
-              def self.example
-                Controls::Time::Raw.example.iso8601 6
-              end
             end
           end
         end
