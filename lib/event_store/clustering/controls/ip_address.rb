@@ -13,6 +13,12 @@ module EventStore
             2
           end
         end
+
+        module NonCluster
+          def self.example
+            EventStore::HTTP::Connect::Controls::IPAddress.example
+          end
+        end
       end
     end
   end

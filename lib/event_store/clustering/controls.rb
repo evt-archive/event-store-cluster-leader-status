@@ -2,6 +2,7 @@ require 'clock/controls'
 require 'identifier/uuid/controls'
 require 'event_store/http/connect/controls'
 
+require 'event_store/clustering/controls/connect_http'
 require 'event_store/clustering/controls/cluster_size'
 require 'event_store/clustering/controls/current_members'
 require 'event_store/clustering/controls/hostname'
