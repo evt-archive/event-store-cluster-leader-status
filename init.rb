@@ -7,4 +7,4 @@ unless libraries_dir.nil?
   $LOAD_PATH.unshift libraries_dir unless $LOAD_PATH.include?(libraries_dir)
 end
 
-require 'event_store/clustering'
+require 'event_store/cluster/leader_status'

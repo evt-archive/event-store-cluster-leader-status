@@ -3,7 +3,7 @@ require_relative '../automated_init'
 context "Get Cluster Status From Gossip Endpoint, IP Address Is Specified" do
   ip_address = Controls::IPAddress.example
 
-  get = EventStore::Clustering::GossipEndpoint::Get.build
+  get = EventStore::Cluster::LeaderStatus::GossipEndpoint::Get.build
 
   Controls::ResolveHost.configure get.connect_http
 

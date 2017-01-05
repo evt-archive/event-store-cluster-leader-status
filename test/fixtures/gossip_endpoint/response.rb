@@ -12,7 +12,7 @@ module Fixtures
 
       def call
         test "Is member" do
-          assert member.instance_of?(EventStore::Clustering::GossipEndpoint::Response::Member)
+          assert member.instance_of?(EventStore::Cluster::LeaderStatus::GossipEndpoint::Response::Member)
         end
 
         test "Instance ID" do

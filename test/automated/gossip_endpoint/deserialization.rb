@@ -6,7 +6,7 @@ context "Gossip Endpoint Deserialization" do
   response = Transform::Read.(
     json_text,
     :json,
-    EventStore::Clustering::GossipEndpoint::Response
+    EventStore::Cluster::LeaderStatus::GossipEndpoint::Response
   )
 
   test "Server IP address" do

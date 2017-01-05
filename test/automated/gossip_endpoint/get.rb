@@ -1,7 +1,7 @@
 require_relative '../automated_init'
 
 context "Get Cluster Status From Gossip Endpoint" do
-  get = EventStore::Clustering::GossipEndpoint::Get.build
+  get = EventStore::Cluster::LeaderStatus::GossipEndpoint::Get.build
 
   Controls::ResolveHost.configure get.connect_http
 

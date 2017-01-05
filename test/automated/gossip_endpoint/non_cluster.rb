@@ -8,11 +8,11 @@ context "Get Cluster Status From Gossip Endpoint, EventStore Is Non-Clustered" d
     connect_http = Controls::ConnectHTTP.example host: host, ip_addresses: [ip_address]
     connect_http.read_timeout = 0.1
 
-    get = EventStore::Clustering::GossipEndpoint::Get.build connect_http
+    get = EventStore::Cluster::LeaderStatus::GossipEndpoint::Get.build connect_http
 
     test "Non-cluster error is raised" do
       assert proc { get.() } do
-        raises_error? EventStore::Clustering::GossipEndpoint::Get::NonClusterError
+        raises_error? EventStore::Cluster::LeaderStatus::GossipEndpoint::Get::NonClusterError
       end
     end
   end
@@ -23,11 +23,11 @@ context "Get Cluster Status From Gossip Endpoint, EventStore Is Non-Clustered" d
     context "Read timeout on HTTP connection exceeds EventStore gossip endpoint tolerance" do
       connect_http = Controls::ConnectHTTP.example host: host, ip_addresses: [ip_address]
 
-      get = EventStore::Clustering::GossipEndpoint::Get.build connect_http
+      get = EventStore::Cluster::LeaderStatus::GossipEndpoint::Get.build connect_http
 
       test "Non-cluster error is raised" do
         assert proc { get.() } do
-          raises_error? EventStore::Clustering::GossipEndpoint::Get::NonClusterError
+          raises_error? EventStore::Cluster::LeaderStatus::GossipEndpoint::Get::NonClusterError
         end
       end
     end

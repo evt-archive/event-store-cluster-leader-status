@@ -1,0 +1,16 @@
+require 'clock/controls'
+require 'identifier/uuid/controls'
+require 'event_store/http/connect/controls'
+
+require 'event_store/cluster/leader_status/controls/connect_http'
+require 'event_store/cluster/leader_status/controls/cluster_size'
+require 'event_store/cluster/leader_status/controls/current_members'
+require 'event_store/cluster/leader_status/controls/hostname'
+require 'event_store/cluster/leader_status/controls/ip_address'
+require 'event_store/cluster/leader_status/controls/resolve_host'
+require 'event_store/cluster/leader_status/controls/port'
+require 'event_store/cluster/leader_status/controls/uuid'
+require 'event_store/cluster/leader_status/controls/time'
+
+require 'event_store/cluster/leader_status/controls/gossip_endpoint/response'
+require 'event_store/cluster/leader_status/controls/gossip_endpoint/response/member'
