@@ -1,8 +1,8 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
-  s.name = 'evt-event_store-clustering'
+  s.name = 'evt-event_store-cluster-leader_status'
   s.version = '0.0.0.0'
-  s.summary = "Clustering support for EventStore"
+  s.summary = "Cluster leader status support for EventStore"
   s.description = ' '
 
   s.authors = ['The Eventide Project']
