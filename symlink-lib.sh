@@ -1,3 +1,3 @@
 source ./library-symlinks.sh
 
-symlink_lib 'clustering' 'event_store'
+symlink_lib 'leader_status' 'event_store/cluster'
