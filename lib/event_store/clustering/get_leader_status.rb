@@ -1,9 +1,9 @@
 module EventStore
   module Clustering
-    class GetLeader
+    class GetLeaderStatus
       include Log::Dependency
 
-      configure :get_leader
+      configure :get_leader_status
 
       dependency :get_gossip_endpoint, GossipEndpoint::Get
 

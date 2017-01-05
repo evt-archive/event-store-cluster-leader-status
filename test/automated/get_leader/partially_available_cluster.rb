@@ -4,7 +4,7 @@ context "Get Cluster Leader, Partially Available Cluster" do
   ip_addresses = Controls::IPAddress::PartiallyAvailable.list
   connect_http = Controls::ConnectHTTP.example ip_addresses: ip_addresses
 
-  get_leader = EventStore::Clustering::GetLeader.build connect_http
+  get_leader = EventStore::Clustering::GetLeaderStatus.build connect_http
 
   leader = get_leader.()
 

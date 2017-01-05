@@ -10,4 +10,4 @@ require 'event_store/clustering/gossip_endpoint/response/transformer'
 require 'event_store/clustering/gossip_endpoint/response/state'
 require 'event_store/clustering/gossip_endpoint/response'
 
-require 'event_store/clustering/get_leader'
+require 'event_store/clustering/get_leader_status'

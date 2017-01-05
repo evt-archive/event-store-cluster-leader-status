@@ -4,7 +4,7 @@ context "Get Cluster Leader, Partially Available Cluster" do
   ip_addresses = Controls::IPAddress::Unavailable.list
   connect_http = Controls::ConnectHTTP.example ip_addresses: ip_addresses
 
-  get_leader = EventStore::Clustering::GetLeader.build connect_http
+  get_leader = EventStore::Clustering::GetLeaderStatus.build connect_http
 
   test "Connection error is raised" do
     assert proc { get_leader.() } do

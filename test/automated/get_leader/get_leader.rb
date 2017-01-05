@@ -3,7 +3,7 @@ require_relative '../automated_init'
 context "Get Cluster Leader" do
   connect_http = Controls::ConnectHTTP.example
 
-  get_leader = EventStore::Clustering::GetLeader.build connect_http
+  get_leader = EventStore::Clustering::GetLeaderStatus.build connect_http
 
   leader = get_leader.()
 
