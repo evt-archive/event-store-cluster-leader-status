@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name = 'evt-event_store-cluster-leader_status'
-  s.version = '0.0.0.0'
+  s.version = '0.0.0.1'
   s.summary = "Cluster leader status support for EventStore"
   s.description = ' '
 
